@@ -1,2 +1,8 @@
 # Gaminghub
-Twinkling Watermelon Hub is a retro-inspired game collection built with C++ and SFML. Inspired by the Korean drama Twinkling Watermelon, it brings together three fun mini-games in a colorful 90s-themed experience with nostalgic visuals and music.
+A retro-inspired gaming hub built with C++ and SFML, inspired by the Korean drama *Twinkling Watermelon*. Featuring a nostalgic 90s aesthetic, this project brings together three unique mini-games in one colorful experience.
+
+## Features
+- 🎮 Three mini-games
+- 🍉 Twinkling Watermelon-inspired theme
+- 🌸 Colorful 90s-inspired visuals
+- 💻 Built with C++ and SFML
