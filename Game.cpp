@@ -1,13 +1,19 @@
 #include "Game.h"
-
+#include <string>
 Game::Game()
 {
-    window.create(
-        sf::VideoMode(800, 600),
-        "Gaming Hub"
-    );
-	
+    window.create(sf::VideoMode(800, 600), "Gaming Hub");
 
+    font.loadFromFile("C:/Windows/Fonts/arial.ttf");
+    scoreText.setFont(font);
+    scoreText.setCharacterSize(24);
+    scoreText.setFillColor(sf::Color::Black);
+    scoreText.setPosition(20.f, 20.f);   
+    
+    livesText.setFont(font);              // NEW
+    livesText.setCharacterSize(24);       // NEW
+    livesText.setFillColor(sf::Color::Black); // NEW
+    livesText.setPosition(20.f, 50.f);    // top-left corner
 }
 void Game::processEvents()
 {
@@ -62,9 +68,9 @@ void Game::processEvents()
         }
         if (event.type == sf::Event::MouseButtonPressed && state == GameState::GameSelectionScreen)
         {
-            if (gameSelectionScreen.ispurpleplaceclicked(mousepos))
+            if (gameSelectionScreen.iswatermelonclicked(mousepos))
             {
-                state = GameState::PurplePlacePlaying;   
+                state = GameState::Watermelon;
             }
            
         }
@@ -91,6 +97,8 @@ void Game::processEvents()
     void Game::update()
     {
         sf::Vector2f mousePos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+        scoreText.setString("Score: " + std::to_string(score));
+        livesText.setString("Lives: " + std::to_string(player.getLives()));
 
         if (state == GameState::MainpageScreen)
         {
@@ -101,20 +109,77 @@ void Game::processEvents()
 
         if (state == GameState::GameSelectionScreen)
         {
-            gameSelectionScreen.updatePurplePlaceHover(mousePos);
+            gameSelectionScreen.updatewatermelonHover(mousePos);
             gameSelectionScreen.updatechessHover(mousePos);
             gameSelectionScreen.updatehowtoplay1Hover(mousePos);
         }
+
+        if (state == GameState::Watermelon)
+        {
+            player.update();
+
+            float dt = gameClock.restart().asSeconds();
+
+            if (spawnClock.getElapsedTime().asSeconds() > 1.5f)
+            {
+                spawnClock.restart();
+
+                // find a free (inactive) slot in the array
+                for (int i = 0; i < MAX_WATERMELONS; i++)
+                {
+                    if (!watermelons[i].isActive())
+                    {
+                        float randomX = 100.f + (rand() % 600);
+                        watermelons[i].spawn(randomX);
+                        break; // stop looking once we've used one slot
+                    }
+                }
+            }
+
+            for (int i = 0; i < MAX_WATERMELONS; i++)
+            {
+                if (watermelons[i].isActive())
+                    
+                    watermelons[i].update(dt);
+            }
+
+            if (player.isKnifeActive())
+            {
+                for (int i = 0; i < MAX_WATERMELONS; i++)
+                {
+                    if (watermelons[i].isActive() && !watermelons[i].getIsCut())   // NEW: only if not already cut
+                    {
+                        if (watermelons[i].getBounds().intersects(player.getKnifeBounds()))
+                        {
+                            watermelons[i].cut();
+                            score += 10;
+                        }
+                    }
+                }
+            }
+            for (int i = 0; i < MAX_WATERMELONS; i++)
+            {
+                if (watermelons[i].isActive() && !watermelons[i].getIsCut())
+                {
+                    if (watermelons[i].getBounds().intersects(player.getBounds()))
+                    {
+                        player.loseLife();
+                        watermelons[i].cut();
+                    }
+                }
+            }
+        }
+
     }
 
 
     void Game::render()
     {
-        window.clear(sf::Color::White);   // also fixing this, see note below
+        window.clear(sf::Color::White);   
 
         if (state == GameState::MenuScreen)
             menu.drawMenu(window);
-        else if (state == GameState::MainpageScreen)   // <-- fixed to match!
+        else if (state == GameState::MainpageScreen)  
             menu.drawMainpage(window);
 		else if (state == GameState::settingsScreen)
             settingsScreen.drawSettings(window);
@@ -122,21 +187,35 @@ void Game::processEvents()
 			gameSelectionScreen.drawGameSelection(window);
 		else if (state == GameState::LeaderboardScreen)
             leaderboardScreen.drawLeaderboard(window);
-        else if (state == GameState::PurplePlacePlaying)
+        
+        else if (state == GameState::Watermelon)
         {
-            // eventually: purplePlaceGame.draw(window);
-            // for now, maybe just a placeholder color/text to confirm it switches
+            watermelonGame.drawwatermelon(window);
+            player.draw(window);
+
+            for (int i = 0; i < MAX_WATERMELONS; i++)
+            {
+                if (watermelons[i].isActive())
+                    watermelons[i].draw(window);
+            }
+            window.draw(scoreText);
+			window.draw(livesText);
+            if (player.getLives() <= 0)
+            {
+                state = GameState::MainpageScreen;   // or a dedicated GameOver state, your choice
+            }
         }
+        
         else if (state == GameState::chess)
         {
-            // eventually: purplePlaceGame.draw(window);
-            // for now, maybe just a placeholder color/text to confirm it switches
+            
         }
         else if (state == GameState::HowToPlay1)
         {
-            // eventually: purplePlaceGame.draw(window);
-            // for now, maybe just a placeholder color/text to confirm it switches
+            watermelonGame.drawwatermelon1(window);
+
         }
+
 
 		
         window.display();

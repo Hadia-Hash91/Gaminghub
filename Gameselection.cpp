@@ -2,46 +2,48 @@
 
 GameSelection::GameSelection()
 {
-	gameselectionbackground.loadFromFile("IMAGES/GAMESELECTION.png");
+	gameselectionbackground.loadFromFile("IMAGES/Gameselection.png");
 	GAMESELECTIONBACKGROUND.setTexture(gameselectionbackground);
 	sf::Vector2u imagesize = gameselectionbackground.getSize();
 	GAMESELECTIONBACKGROUND.setScale(800.f / imagesize.x, 600.f / imagesize.y);
-	purpleplace.loadFromFile("IMAGES/PURPLEPLACE.png");
-	PURPLEPLACE.setTexture(purpleplace);
-	PURPLEPLACE.setScale(0.4f, 0.4f);
-	PURPLEPLACE.setPosition(100.f, 270.f);
+	watermelonshooter.loadFromFile("IMAGES/Watermelonshooter.png");
+	WATERMELONSHOOTER.setTexture(watermelonshooter);
+	WATERMELONSHOOTER.setScale(0.6f, 0.6f);
+	WATERMELONSHOOTER.setPosition(100.f, 210.f);
 
 	chess.loadFromFile("IMAGES/CHESS.png");
 	CHESS.setTexture(chess);
 	CHESS.setScale(0.6f, 0.6f);
 	CHESS.setPosition(265.f, 260.f);
 
-	howtoplay1.loadFromFile("IMAGES/CHESS.png");
+	howtoplay1.loadFromFile("IMAGES/HOWTOPLAY1.png");
 	HOWTOPLAY1.setTexture(howtoplay1);
-	HOWTOPLAY1.setScale(0.3f, 0.3f);
-	HOWTOPLAY1.setPosition(265.f, 200.f);
+	HOWTOPLAY1.setScale(0.25f, 0.25f);
+	HOWTOPLAY1.setPosition(120.f, 370.f);
+	
 	
 }
 
 void GameSelection::drawGameSelection(sf::RenderWindow& window)
 {
 	window.draw(GAMESELECTIONBACKGROUND);
-	window.draw(PURPLEPLACE);
+	window.draw(WATERMELONSHOOTER);
 	window.draw(CHESS);
+	window.draw(HOWTOPLAY1);
 }
 
 // GameSelection.cpp
-bool GameSelection::ispurpleplaceclicked(sf::Vector2f mousepos)
+bool GameSelection::iswatermelonclicked(sf::Vector2f mousepos)
 {
-	return PURPLEPLACE.getGlobalBounds().contains(mousepos);
+	return WATERMELONSHOOTER.getGlobalBounds().contains(mousepos);
 }
 
-void GameSelection::updatePurplePlaceHover(sf::Vector2f mousepos)
+void GameSelection::updatewatermelonHover(sf::Vector2f mousepos)
 {
-	if (PURPLEPLACE.getGlobalBounds().contains(mousepos))
-		PURPLEPLACE.setColor(sf::Color(180, 180, 180));
+	if (WATERMELONSHOOTER.getGlobalBounds().contains(mousepos))
+		WATERMELONSHOOTER.setColor(sf::Color(180, 180, 180));
 	else
-		PURPLEPLACE.setColor(sf::Color::White);
+		WATERMELONSHOOTER.setColor(sf::Color::White);
 }
 
 bool GameSelection::ischessclicked(sf::Vector2f mousepos)

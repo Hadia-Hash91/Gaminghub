@@ -133,20 +133,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="fallingw.cpp" />
     <ClCompile Include="Gameselection.cpp" />
+    <ClCompile Include="Knife.cpp" />
     <ClCompile Include="leaderboard.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="SETTINGS.cpp" />
+    <ClCompile Include="Watermelon.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="fallingw.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Gameselection.h" />
+    <ClInclude Include="Knife.h" />
     <ClInclude Include="leaderboard.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="SETTINGS.h" />
     <ClInclude Include="SnowBros.h" />
+    <ClInclude Include="Watermelon.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

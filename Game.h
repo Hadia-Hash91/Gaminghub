@@ -5,6 +5,12 @@
 #include"SETTINGS.h"
 #include"Gameselection.h"
 #include"leaderboard.h"
+#include"Player.h"
+#include"Watermelon.h"
+#include "fallingw.h"
+
+const int MAX_WATERMELONS = 20;
+
 enum class GameState
 {
     MenuScreen,
@@ -13,9 +19,11 @@ enum class GameState
 	settingsScreen,
 	GameSelectionScreen,
 	LeaderboardScreen,
-    PurplePlacePlaying,
+    Watermelon,
     chess,
-    HowToPlay1
+    HowToPlay1,
+    GameOver
+	
 };
 class Game
 {
@@ -29,7 +37,18 @@ private:
      Leaderboard leaderboardScreen;
      bool isPressed = false;
      GameState state = GameState::MenuScreen;
+     watermelon watermelonGame; 
+     Player player;
+     Watermelon watermelons[MAX_WATERMELONS];
 
+     sf::Text livesText;
+
+     sf::Font font;
+     sf::Text scoreText;
+
+     sf::Clock spawnClock;
+     sf::Clock gameClock;
+     int score = 0;
     void processEvents();
     void update();
     void render();

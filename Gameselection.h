@@ -5,8 +5,8 @@ class GameSelection
 private:
 	sf::Texture gameselectionbackground;
 	sf::Sprite GAMESELECTIONBACKGROUND;
-	sf::Texture purpleplace;
-	sf::Sprite PURPLEPLACE;
+	sf::Texture watermelonshooter;
+	sf::Sprite WATERMELONSHOOTER;
 	Menu menu1;
 	sf::Texture chess;
 	sf::Sprite CHESS;
@@ -16,8 +16,8 @@ public:
 	GameSelection();
 	void drawGameSelection(sf::RenderWindow& window);
 	
-	bool ispurpleplaceclicked(sf::Vector2f mousepos);
-	void updatePurplePlaceHover(sf::Vector2f mousepos);
+	bool iswatermelonclicked(sf::Vector2f mousepos);
+	void updatewatermelonHover(sf::Vector2f mousepos);
 	
 	bool ischessclicked(sf::Vector2f mousepos);
 	void updatechessHover(sf::Vector2f mousepos);
