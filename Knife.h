@@ -1,5 +1,4 @@
 #pragma once
-#pragma once
 #include <SFML/Graphics.hpp>
 
 class Knife
@@ -16,8 +15,15 @@ private:
     const int frameH = 353; /* fill in */;
     const int frameCount = 8;
 
-    float speed = 200.f;   // upward speed, adjust to taste
+    float speed = 500.f;   // upward speed
     bool active = false;
+
+    // Same idea as Player: the strip frame is bigger than the actual knife
+    // graphic, so trim the empty padding off before using it for collisions.
+    // Tune these while watching the hitbox overlay (H key).
+    float boundsTopTrim = 110.f;
+    float boundsBottomTrim = 110.f;
+    float boundsSideTrim = 15.f; // trims off BOTH the left and right edges
 
 public:
     Knife();
@@ -25,5 +31,6 @@ public:
     void update(float dt);
     void draw(sf::RenderWindow& window);
     bool isActive() const { return active; }
-    sf::FloatRect getBounds() const { return sprite.getGlobalBounds(); }
+    void deactivate() { active = false; }
+    sf::FloatRect getBounds() const;
 };
