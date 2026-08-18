@@ -22,8 +22,17 @@ Menu::Menu()
 		SETTINGBUTTON.setScale(0.5f, 0.5f);
 		leaderboardbutton.loadFromFile("IMAGES/LEADERBOARDBUTTON.png");
 		LEADERBOARDBUTTON.setTexture(leaderboardbutton);
-		LEADERBOARDBUTTON.setPosition(250.f, 330.f); // Set the position of the start button
+		LEADERBOARDBUTTON.setPosition(249.f, 330.f); // Set the position of the start button
 		LEADERBOARDBUTTON.setScale(0.5f, 0.5f);
+		characterselectionbutton.loadFromFile("IMAGES/CHARACTERSELECTIONBUTTON.png");
+		CHARACTERSELECTIONBUTTON.setTexture(characterselectionbutton);
+        CHARACTERSELECTIONBUTTON.setPosition(252.f, 370.f); // Set the position of the start button
+		CHARACTERSELECTIONBUTTON.setScale(0.35f, 0.35f);
+
+		Exitbutton.loadFromFile("IMAGES/Exitbutton.png");
+		EXITBUTTON.setTexture(Exitbutton);
+		EXITBUTTON.setPosition(240.f, 420.f); // Set the position of the start button
+		EXITBUTTON.setScale(0.35f, 0.35f);
 
 	sf::Vector2u imagesize = menu.getSize();
 	MENU.setScale(800.f / imagesize.x, 600.f / imagesize.y);
@@ -35,6 +44,10 @@ bool Menu::isStartButtonClicked(sf::Vector2f mousepos)
 {
 	return STARTBUTTON.getGlobalBounds().contains(mousepos);
 	
+}
+bool Menu::isExitClicked(sf::Vector2f mousepos)
+{
+	return EXITBUTTON.getGlobalBounds().contains(mousepos);
 }
 void Menu::ispressed()
 {
@@ -63,6 +76,15 @@ void Menu::updateLeaderboardHover(sf::Vector2f mousepos)
 {
 	updateHover(LEADERBOARDBUTTON, mousepos);
 }
+
+void Menu::updatecharacterselectionHover(sf::Vector2f mousepos)
+{
+	updateHover(CHARACTERSELECTIONBUTTON, mousepos);
+}
+void Menu::updateExitHover(sf::Vector2f mousepos)
+{
+	updateHover(EXITBUTTON, mousepos);
+}
 void Menu::updateHover(sf::Sprite& button, sf::Vector2f mousepos)
 {
 	if (button.getGlobalBounds().contains(mousepos))
@@ -70,6 +92,7 @@ void Menu::updateHover(sf::Sprite& button, sf::Vector2f mousepos)
 	else
 		button.setColor(sf::Color::White); // normal
 }
+
 bool Menu::isMainStartClicked(sf::Vector2f mousepos)
 {
 	return MAINSTARTBUTTON.getGlobalBounds().contains(mousepos);
@@ -85,6 +108,12 @@ bool Menu::isLeaderboardClicked(sf::Vector2f mousepos)
 	return LEADERBOARDBUTTON.getGlobalBounds().contains(mousepos);
 }
 
+bool Menu::ischaracterselectionClicked(sf::Vector2f mousepos)
+{
+	return CHARACTERSELECTIONBUTTON.getGlobalBounds().contains(mousepos);
+}
+
+
 void Menu::drawMenu(sf::RenderWindow& window)
 {
 	window.draw(MENU);
@@ -97,4 +126,6 @@ void Menu::drawMainpage(sf::RenderWindow& window)
 	window.draw(MAINSTARTBUTTON);
 	window.draw(SETTINGBUTTON);
 	window.draw(LEADERBOARDBUTTON);
+	window.draw(CHARACTERSELECTIONBUTTON);
+	window.draw(EXITBUTTON);
 }

@@ -105,12 +105,12 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\Users\Lenovo\Downloads\SFML-2.5.1-windows-vc15-64-bit\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Lenovo\OneDrive\Desktop\SFML_VS_Setup_2026\SFML_VS_Setup_2026\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Lenovo\Downloads\SFML-2.5.1-windows-vc15-64-bit\SFML-2.5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Lenovo\OneDrive\Desktop\SFML_VS_Setup_2026\SFML_VS_Setup_2026\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-audio-d.lib;sfml-system-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -123,37 +123,50 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\Users\Lenovo\Downloads\SFML-2.5.1-windows-vc15-64-bit\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Lenovo\OneDrive\Desktop\SFML_VS_Setup_2026\SFML_VS_Setup_2026\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Lenovo\Downloads\SFML-2.5.1-windows-vc15-64-bit\SFML-2.5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Lenovo\OneDrive\Desktop\SFML_VS_Setup_2026\SFML_VS_Setup_2026\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-graphics.lib;sfml-window.lib;sfml-audio.lib;sfml-system.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AssetManager.cpp" />
+    <ClCompile Include="Board.cpp" />
+    <ClCompile Include="Characterselection.cpp" />
     <ClCompile Include="fallingw.cpp" />
     <ClCompile Include="Gameselection.cpp" />
     <ClCompile Include="Knife.cpp" />
+    <ClCompile Include="LaneRunner.cpp" />
     <ClCompile Include="leaderboard.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SETTINGS.cpp" />
+    <ClCompile Include="Tetromino.cpp" />
+    <ClCompile Include="TileTetris.cpp" />
     <ClCompile Include="Watermelon.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AssetManager.h" />
+    <ClInclude Include="Board.h" />
+    <ClInclude Include="Characterselection.h" />
+    <ClInclude Include="Constants.h" />
     <ClInclude Include="fallingw.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Gameselection.h" />
     <ClInclude Include="Knife.h" />
+    <ClInclude Include="LaneRunner.h" />
     <ClInclude Include="leaderboard.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="SETTINGS.h" />
     <ClInclude Include="SnowBros.h" />
+    <ClInclude Include="Tetromino.h" />
+    <ClInclude Include="TileTetris.h" />
     <ClInclude Include="Watermelon.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

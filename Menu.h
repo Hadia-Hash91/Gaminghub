@@ -15,6 +15,10 @@ private:
 	sf::Sprite SETTINGBUTTON;
 	sf::Texture leaderboardbutton;
 	sf::Sprite LEADERBOARDBUTTON;
+	sf::Texture characterselectionbutton;
+	sf::Sprite CHARACTERSELECTIONBUTTON;
+	sf::Texture Exitbutton;
+	sf::Sprite EXITBUTTON;
 
 public:
 	Menu();
@@ -27,10 +31,14 @@ public:
 	bool isMainStartClicked(sf::Vector2f mousepos);
 	bool isSettingsClicked(sf::Vector2f mousepos);
 	bool isLeaderboardClicked(sf::Vector2f mousepos);
-
+	bool ischaracterselectionClicked(sf::Vector2f mousepos);
+	bool isExitClicked(sf::Vector2f mousepos);
 	void updateMainStartHover(sf::Vector2f mousepos);
 	void updateSettingsHover(sf::Vector2f mousepos);
 	void updateLeaderboardHover(sf::Vector2f mousepos);
 	void updateHover(sf::Sprite& button, sf::Vector2f mousepos);
+	void updatecharacterselectionHover(sf::Vector2f mousepos);
+	void updateExitHover(sf::Vector2f mousepos);
+
 
 };

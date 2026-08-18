@@ -42,7 +42,13 @@
     <ClCompile Include="Knife.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LaneRunner.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="fallingw.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Characterselection.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -74,7 +80,13 @@
     <ClInclude Include="Knife.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LaneRunner.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="fallingw.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Characterselection.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
